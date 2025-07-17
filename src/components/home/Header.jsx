@@ -3,7 +3,10 @@ import { Link } from 'react-router'; // Asumiendo que usas React Router para la 
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar el menú en móviles
-
+    // Función para cerrar el menú
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
     return (
         <header className="bg-white text-[#1d3660] p-4 shadow-xl fixed w-full z-50">
             {/* bg-[#1d3660] */}
@@ -34,16 +37,16 @@ export default function Header() {
                 <nav className={`${isMenuOpen ? 'block' : 'hidden'} md:block absolute md:static top-full left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none transition-all duration-300 ease-in-out`}>
                     <ul className="flex flex-col items-center md:flex-row md:space-x-8 space-y-4 md:space-y-0 p-4 md:p-0">
                         <li>
-                            <Link to="/" className="block md:inline-block hover:text-[#a0965c] text-lg font-semibold transition-transform duration-300 ase-in-out hover:scale-120">Inicio</Link>
+                            <Link to="/" className="block md:inline-block hover:text-[#a0965c] text-lg font-semibold transition-transform duration-300 ase-in-out hover:scale-120" onClick={closeMenu}>Inicio</Link>
                         </li>
                         <li>
-                            <Link to="/servicios" className="block md:inline-block hover:text-[#a0965c] text-lg font-semibold transition-transform duration-300 ase-in-out hover:scale-120">Servicios</Link>
+                            <Link to="/servicios" className="block md:inline-block hover:text-[#a0965c] text-lg font-semibold transition-transform duration-300 ase-in-out hover:scale-120" onClick={closeMenu}>Servicios</Link>
                         </li>
                         <li>
-                            <Link to="/nosotros" className="block md:inline-block hover:text-[#a0965c] text-lg font-semibold transition-transform duration-300 ase-in-out hover:scale-120">Nosotros</Link>
+                            <Link to="/nosotros" className="block md:inline-block hover:text-[#a0965c] text-lg font-semibold transition-transform duration-300 ase-in-out hover:scale-120" onClick={closeMenu}>Nosotros</Link>
                         </li>
                         <li>
-                            <Link to="/contacto" className="block md:inline-block hover:text-[#a0965c] text-lg font-semibold transition-transform duration-300 ase-in-out hover:scale-120">Contacto</Link>
+                            <Link to="/contacto" className="block md:inline-block hover:text-[#a0965c] text-lg font-semibold transition-transform duration-300 ase-in-out hover:scale-120" onClick={closeMenu}>Contacto</Link>
                         </li>
                         {/* Puedes añadir un botón de "Registrarse" o "Acceso a Alumnos" */}
                         <li>
