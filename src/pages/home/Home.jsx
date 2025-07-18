@@ -4,6 +4,7 @@ import BackgroundBlob from '../../components/home/Background'
 import blobImage from '/blob-blueP.png'
 import SuccessCasesCarousel from '../../components/home/Carousel'
 
+
 export default function Home() {
     return (
         <>

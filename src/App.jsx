@@ -7,6 +7,7 @@ import Contacto from "./pages/Contact/Contacto"
 import WPbutton from "./components/general/WPbutton"
 import Footer from "./components/general/Footer"
 import Login from "./pages/Login/Login"
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <WPbutton />
       </div>
       <Footer />
+      <Analytics />
     </>
   )
 }
