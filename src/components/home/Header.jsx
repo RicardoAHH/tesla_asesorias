@@ -53,6 +53,7 @@ export default function Header() {
                             <Link
                                 to="/login"
                                 className="block md:inline-block bg-[#1d3660] text-white px-4 py-2 rounded-md hover:text-white hover:bg-[#a0965c] transition-colors duration-200 font-semibold text-lg"
+                                onClick={closeMenu}
                             >
                                 Acceso Alumnos
                             </Link>

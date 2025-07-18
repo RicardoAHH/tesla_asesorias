@@ -14,7 +14,7 @@ export default function AboutUsSection() {
             image: '/acepted2.png', // Reemplaza con tu imagen
             alt: 'Estudiantes celebrando su ingreso a la universidad',
             title: 'Resultados que nos validan',
-            description: 'Muchos estudiantes han logrado sus objetivos aprobando las materias que les resultaban muy dificiles o ingresando a la institucion que deseaban. Sus logros nos impulsan a seguir mejorando.',
+            description: 'Muchos estudiantes han logrado sus objetivos aprobando las materias que les resultaban muy difíciles o ingresando a la institución que deseaban. Sus logros nos impulsan a seguir mejorando.',
         },
         {
             id: 3,
