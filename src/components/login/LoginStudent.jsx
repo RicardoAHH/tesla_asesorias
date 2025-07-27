@@ -1,47 +1,51 @@
-
 import React, { useState } from 'react';
-// Si estás usando 'react-router-dom', importa Link así:
-// import { Link } from 'react-router-dom'; 
-// Si estás usando Next.js, importa Link así:
-// import Link from 'next/link';
+import { useNavigate } from 'react-router';
+import { supabase } from '../../utils/supabaseClient'; // Tu cliente de Supabase
 
 export default function StudentLogin() {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    let navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(''); // Limpiar errores previos
         setLoading(true); // Indicar que la carga ha comenzado
 
-        // *** Lógica de Autenticación (simulada por ahora) ***
-        // Aquí es donde integrarías tu llamada a la API o base de datos.
-        // Este es un ejemplo simplificado.
         try {
-            // Simula una llamada a la API
-            const response = await new Promise(resolve => setTimeout(() => {
-                if (username === 'alumno' && password === 'pass123') { // Ejemplo de credenciales
-                    resolve({ success: true });
-                } else {
-                    resolve({ success: false, message: 'Usuario o contraseña incorrectos.' });
-                }
-            }, 1500)); // Simula un retraso de 1.5 segundos para la red
+            const { data, error: supabaseError } = await supabase.auth.signInWithPassword({
+                email: email,
+                password: password,
+            });
 
-            if (response.success) {
-                // Redirigir al dashboard del estudiante o a la página principal
-                console.log('Login exitoso!');
-                // Ejemplo de redirección (descomenta según tu router):
-                // router.push('/dashboard-estudiante'); // Si usas Next.js router
-                // history.push('/dashboard-estudiante'); // Si usas react-router-dom useHistory
-                alert('¡Bienvenido, ' + username + '!'); // Alerta simple por ahora
+            if (supabaseError) {
+                setError(supabaseError.message);
+            } else if (data.user) {
+                console.log('Login exitoso con Supabase!', data.user);
+                // Opcional: Si necesitas los datos del perfil (nombre, teléfono, etc.)
+                // después del login, puedes hacer una petición a tu tabla 'public.users' aquí
+                // usando data.user.id
+                // Ejemplo:
+                const { data: profile, error: profileError } = await supabase
+                    .from('users')
+                    .select('*')
+                    .eq('id', data.user.id)
+                    .single();
+
+                if (profileError) console.error("Error al obtener perfil:", profileError.message);
+                else console.log("Perfil del usuario:", profile);
+
+                // Redirigir al dashboard del estudiante
+                navigate(`/dashboard/${profile.group}`); // Ajusta esta ruta según tu aplicación
             } else {
-                setError(response.message);
+                // Esto podría ocurrir si Supabase no devuelve un error pero tampoco un usuario/sesión
+                setError('Credenciales incorrectas o usuario no activo.');
             }
         } catch (err) {
             setError('Ocurrió un error al intentar iniciar sesión. Intenta de nuevo.');
-            console.error('Error de login:', err);
+            console.error('Error de login inesperado:', err);
         } finally {
             setLoading(false); // Indicar que la carga ha terminado
         }
@@ -63,23 +67,29 @@ export default function StudentLogin() {
                         Ingresa tus credenciales proporcionadas por la administración.
                     </p>
                 </div>
+
+                {/* Mensaje de Error */}
+                {error && (
+                    <div className="text-red-600 text-sm text-center">
+                        {error}
+                    </div>
+                )}
+
                 <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-                    {/* Campo de Usuario */}
                     <div>
-                        <label htmlFor="username" className="sr-only">Usuario</label>
+                        <label htmlFor="email" className="sr-only">Email</label>
                         <input
-                            id="username"
-                            name="username"
-                            type="text"
-                            autoComplete="username"
+                            id="email"
+                            name="email"
+                            type="email"
+                            autoComplete="email"
                             required
                             className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#a0965c] focus:border-[#a0965c] focus:z-10 sm:text-sm"
-                            placeholder="Usuario"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
-                    {/* Campo de Contraseña */}
                     <div>
                         <label htmlFor="password" className="sr-only">Contraseña</label>
                         <input
@@ -95,19 +105,12 @@ export default function StudentLogin() {
                         />
                     </div>
 
-                    {/* Mensaje de Error */}
-                    {error && (
-                        <div className="text-red-600 text-sm text-center">
-                            {error}
-                        </div>
-                    )}
-
                     {/* Botón de Iniciar Sesión */}
                     <div>
                         <button
                             type="submit"
                             disabled={loading}
-                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#1d3660] hover:bg-[#152a4e] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#a0965c] transition-all duration-300"
+                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#1d3660] hover:bg-[#152a4e] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#a0965c] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {loading ? (
                                 <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -122,16 +125,7 @@ export default function StudentLogin() {
                 </form>
 
                 {/* Opcional: Enlace para volver a la página principal */}
-                <div className="text-center text-sm">
-                    {/* Si usas react-router-dom: */}
-                    {/* <Link to="/" className="font-medium text-[#1d3660] hover:text-[#a0965c]">
-            Volver a la página principal
-          </Link> */}
-                    {/* Si usas Next.js: */}
-                    {/* <Link href="/" className="font-medium text-[#1d3660] hover:text-[#a0965c]">
-            Volver a la página principal
-          </Link> */}
-                    {/* O un simple enlace HTML si no usas un router específico: */}
+                <div className="text-center text-sm mt-4">
                     <a href="/" className="font-medium text-[#1d3660] hover:text-[#a0965c]">
                         Volver a la página principal
                     </a>
