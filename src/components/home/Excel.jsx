@@ -63,7 +63,7 @@ export default function Excel() {
 
                     <h3 className="text-lg font-bold text-gray-800 mb-2">Más información y Registro:</h3>
                     <a
-                        href="https://docs.google.com/forms/d/e/1FAIpQLSdnXsXQ9rGcx5lQQhWpvI03JtSYI-9gIQYryJigjM4cxoD2yw/viewform?usp=dialog" // Reemplaza esto con el enlace de registro real si es diferente al de información
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSeQyu6bdb1GU2rgpKgwzxJn48gp4oXYvsSSOeT-VBjJ7B6SaA/viewform?usp=dialog" // Reemplaza esto con el enlace de registro real si es diferente al de información
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-full sm:w-auto px-6 py-3 bg-[#a0965c] text-white font-bold rounded-lg shadow-lg hover:bg-[#857d4a] transition duration-300 text-center mb-4"
