@@ -1,5 +1,5 @@
 import React from 'react';
-import excelCourseImage from '../../../public/CursoExcel.png'; // Asegúrate de la ruta correcta a tu imagen
+import excelCourseImage from '../../../public/CursoExcel3.jpg'; // Asegúrate de la ruta correcta a tu imagen
 
 export default function Excel() {
     return (
@@ -56,8 +56,8 @@ export default function Excel() {
 
                     <div className="mb-6 text-gray-700">
                         <p className="font-bold text-lg mb-2">Detalles del Curso:</p>
-                        <p><strong>10 HORAS TOTALES</strong> del Lunes 4 al Viernes 8 de Agosto</p>
-                        <p><strong>COSTO TOTAL: $100</strong></p>
+                        <p><strong>10 HORAS TOTALES</strong> del Lunes 11 al Viernes 15 de Agosto</p>
+                        <p><strong>COSTO TOTAL: $350 ($250 para los primeros 5 inscritos o si eres ex-estudiante Tesla)</strong></p>
                         <p>CURSO PRESENCIAL</p>
                     </div>
 
