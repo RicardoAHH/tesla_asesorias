@@ -3,11 +3,11 @@ import React from 'react';
 import { useOutletContext } from 'react-router';
 
 // Importa todas tus imágenes
-import calendarGrupoA from '../../../public/Calendario1.jpg';
-import calendarGrupoB from '../../../public/Calendario1.jpg';
-import calendarGrupoC from '../../../public/Calendario1.jpg';
-import calendarGrupoD from '../../../public/Calendario1.jpg';
-import calendarDefault from '../../../public/Calendario1.jpg';
+import calendarGrupoA from '/Calendario1.jpg';
+import calendarGrupoB from '/Calendario1.jpg';
+import calendarGrupoC from '/Calendario1.jpg';
+import calendarGrupoD from '/Calendario1.jpg';
+import calendarDefault from '/Calendario1.jpg';
 
 // Objeto que mapea nombres de grupo (en minúsculas) a sus rutas de imagen
 const calendarImages = {

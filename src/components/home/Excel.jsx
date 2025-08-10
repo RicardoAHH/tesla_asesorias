@@ -1,5 +1,5 @@
 import React from 'react';
-import excelCourseImage from '../../../public/CursoExcel3.jpg'; // Asegúrate de la ruta correcta a tu imagen
+import excelCourseImage from '/CursoExcel3.jpg'; // Asegúrate de la ruta correcta a tu imagen
 
 export default function Excel() {
     return (

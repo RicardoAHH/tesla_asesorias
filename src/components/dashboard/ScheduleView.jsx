@@ -3,12 +3,12 @@ import { useOutletContext } from 'react-router'; // Asegúrate que sea 'react-ro
 
 // Importa tus imágenes de horario aquí
 // Asegúrate de que las rutas sean correctas y las imágenes existan
-import scheduleGrupoA from '../../../public/horario1.jpg'; // Ruta a tu imagen para Horario Grupo A
-import scheduleGrupoB from '../../../public/horario1.jpg'; // Ruta a tu imagen para Horario Grupo B
-import scheduleGrupoC from '../../../public/horario1.jpg'; // Ruta a tu imagen para Horario Grupo C
-import scheduleGrupoD from '../../../public/horario1.jpg'; // Ruta a tu imagen para Horario Grupo D
+import scheduleGrupoA from '/horario1.jpg'; // Ruta a tu imagen para Horario Grupo A
+import scheduleGrupoB from '/horario1.jpg'; // Ruta a tu imagen para Horario Grupo B
+import scheduleGrupoC from '/horario1.jpg'; // Ruta a tu imagen para Horario Grupo C
+import scheduleGrupoD from '/horario1.jpg'; // Ruta a tu imagen para Horario Grupo D
 // Opcional: una imagen por defecto si el grupo no tiene un horario específico
-import scheduleDefault from '../../../public/horarioVacio.jpg';
+import scheduleDefault from '/horarioVacio.jpg';
 
 // Objeto que mapea nombres de grupo (en minúsculas) a sus rutas de imagen de horario
 const scheduleImages = {
