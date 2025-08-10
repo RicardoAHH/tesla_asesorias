@@ -4,7 +4,7 @@ export default function AboutUsSection() {
     const aboutPoints = [
         {
             id: 1,
-            image: 'ejemplo2.png', // Reemplaza con tu imagen
+            image: '/ejemplo2.png', // Reemplaza con tu imagen
             alt: 'Grupo de egresados de la UNAM',
             title: 'Somos egresados de la UNAM',
             description: 'Somos profesionales egresados de la UNAM, con más de 10 años de experiencia en docencia y preparación para ingreso a nivel medio superior. Nuestra base académica sólida es tu garantía.',
@@ -18,7 +18,7 @@ export default function AboutUsSection() {
         },
         {
             id: 3,
-            image: 'ambiente.png', // Reemplaza con tu imagen
+            image: '/ambiente.png', // Reemplaza con tu imagen
             alt: 'Estudiantes interactuando en un ambiente de aprendizaje amigable',
             title: 'Un ambiente donde disfrutas aprender',
             description: 'Fomentamos un entorno de trabajo positivo y motivador, donde cada estudiante se siente cómodo, animado y disfruta el proceso de aprendizaje al máximo.',
@@ -32,7 +32,7 @@ export default function AboutUsSection() {
         },
         {
             id: 5,
-            image: 'instalaciones.png', // Reemplaza con tu imagen
+            image: '/instalaciones.png', // Reemplaza con tu imagen
             alt: 'Interior de un salón de clases moderno y equipado',
             title: 'Instalaciones adecuadas para el aprendizaje',
             description: 'Contamos con salones adecuados con internet de alta velocidad, televisores para clases interactivas y videovigilancia para un entorno seguro y óptimo de estudio.',
