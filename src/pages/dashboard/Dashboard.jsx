@@ -39,7 +39,7 @@ export default function DashboardLayout() {
                 try {
                     const { data, error } = await supabase
                         .from('users')
-                        .select('name, phone, school, group, lastname') // Selecciona los campos que necesitas
+                        .select('name, phone, school, group, lastname, grades_sheet_link') // Selecciona los campos que necesitas
                         .eq('id', user.id)
                         .single();
 

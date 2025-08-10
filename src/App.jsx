@@ -13,8 +13,7 @@ import Dashboard from "./pages/dashboard/Dashboard"
 import { AuthProvider } from "./contexts/AuthContext"
 import PrivateRoute from "./components/general/PrivateRoute"
 import ProfileView from "./components/dashboard/ProfileView"
-// import GradesView from "./pages/dashboard/GradesView";
-
+import GradesView from "./components/dashboard/GradesView"
 // Importa los componentes de contenido DINÁMICO
 import CalendarView from "./components/dashboard/CalendarView"
 import ScheduleView from "./components/dashboard/ScheduleView"
@@ -39,7 +38,7 @@ function App() {
             <Route path="/dashboard/:groupName/*" element={<Dashboard />}>
               <Route index element={<ProfileView />} /> {/* Ruta por defecto al entrar a /dashboard */}
               <Route path="perfil" element={<ProfileView />} />
-              {/* <Route path="calificaciones" element={<GradesView />} /> */}
+              <Route path="calificaciones" element={<GradesView />} />
               <Route path="calendario" element={<CalendarView />} />
               <Route path="horario" element={<ScheduleView />} />
               <Route path="clases-grabadas" element={<RecordedClassesView />} />
