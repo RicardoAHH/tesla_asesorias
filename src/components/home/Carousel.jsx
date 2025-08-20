@@ -124,7 +124,7 @@ export default function SuccessCasesCarousel() {
             comment: "",
         },
         {
-            src: "Paola.png",
+            src: "Pao.png",
             alt: "Paola",
             name: "Paola",
             achievement: "Admisión a prepa 4 de la UNAM",
@@ -152,7 +152,7 @@ export default function SuccessCasesCarousel() {
             comment: "",
         },
         {
-            src: "Héctor.png",
+            src: "Hector.png",
             alt: "Héctor",
             name: "Héctor",
             achievement: "Admisión CCH Naucalpan de la UNAM",
