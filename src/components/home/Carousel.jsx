@@ -86,7 +86,7 @@ export default function SuccessCasesCarousel() {
             alt: "Joshua",
             name: "Joshua",
             achievement: "Admisión a prepa 4 de la UNAM",
-            comment: "El curso de Tesla para entrar a la media superior a mi parecer fue excelente, los maestros son muy buenos y profesionales también te explican los temas que necesitas saber y que vendrán en el examen, en lo personal cuando a mí me explicaban un tema, lo entendia con mucha claridad y si no entendía me lo repetían hasta lo  entendiera, de verdad muy buen curso gracias a ellos logré sacar 103 aciertos en mi examen ecoems y quedarme en mi primera opción.",
+            comment: "El curso de Tesla para entrar a la media superior a mi parecer fue excelente, los maestros son muy buenos y profesionales también te explican los temas que necesitas saber y que vendrán en el examen, en lo personal cuando a mí me explicaban un tema, lo entendia con mucha claridad y si no entendía me lo repetían hasta que lo entendiera, de verdad muy buen curso gracias a ellos logré sacar 103 aciertos en mi examen ECOEMS y quedarme en mi primera opción.",
         },
         {
             src: "JuanAntonio.png",
@@ -163,7 +163,7 @@ export default function SuccessCasesCarousel() {
             alt: "Iker",
             name: "Iker",
             achievement: "Admisión CCH Naucalpan de la UNAM",
-            comment: "",
+            comment: "Durante el tiempo que estuve en los cursos tesla, siempre hubo un apoyo para el estudio, si no entiendes algún tema, te ayudan a entenderlo de una forma muy clara tanto el profesor como la profesora siempre te piden que des lo mejor. Fue una gran oportunidad el haber estudiado con ellos.",
         },
         {
             src: "Santiago.png",
