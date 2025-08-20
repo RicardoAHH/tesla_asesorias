@@ -1,92 +1,177 @@
 import { useState } from "react";
 
-
 export default function SuccessCasesCarousel() {
     const [currentSlide, setCurrentSlide] = useState(0);
 
-    // Aquí definimos los datos de nuestros alumnos/casos de éxito
-    // ¡Puedes reemplazar estas URLs con tus imágenes reales!
     const successStories = [
-
         {
-            src: "/resultado6.png",
-            alt: "Foto del alumno 6",
-            name: "Juan",
+            src: "/Sol.png",
+            alt: "Sol",
+            name: "Sol",
             achievement: "Admisión a prepa 4 de la UNAM",
+            comment: "Recomiendo Tesla porque la enseñanza es espectacular, más allá de los conocimientos brindados, hay un gran esmero por ambos maestros donde buscan que tengas seguridad en ti mismo. La convivencia entre todos es primordial ya que siempre se busca un ambiente sano y muy amigable. En todas las clases te muestran los temas a detalle, son muy atentos por si hay alguna duda y sobre todo las dinámicas que hacen son muy buenas, te motivan a seguirle echando ganas!",
         },
         {
-            src: "/resultado1.png",
-            alt: "Foto del alumno 1",
-            name: "Aldo",
+            src: "/Renee.png",
+            alt: "Renee",
+            name: "Renee",
             achievement: "Admisión a prepa 4 de la UNAM",
+            comment: "Muchas gracias por todo su apoyo, el mejor curso, los mejores profesores. Sin duda fueron muy importantes para haber podido obtener este resultado y quedar en mi 1ra opción, los recomiendo muchísimo.",
         },
         {
-            src: "/resultado9.png",
-            alt: "Foto del alumno 9",
-            name: "Elioth",
+            src: "/Bryana.png",
+            alt: "Bryana",
+            name: "Bryana",
+            achievement: "Admisión a prepa 4 de la UNAM",
+            comment: "",
+        },
+        {
+            src: "/Sofi.png",
+            alt: "Sofi",
+            name: "Sofi",
             achievement: "Admisión a CCH Naucalpan de la UNAM",
+            comment: "",
         },
         {
-            src: "/resultado12.png",
-            alt: "Foto del alumno 12",
-            name: "Samantha",
-            achievement: "Admisión a prepa 4 de la UNAM",
+            src: "Brenda.png",
+            alt: "Brenda",
+            name: "Brenda",
+            achievement: "Admisión a CCH Naucalpan de la UNAM",
+            comment: "",
         },
         {
-            src: "resultado2.png",
-            alt: "Foto del alumno 2",
+            src: "Diego.png",
+            alt: "Diego",
             name: "Diego",
+            achievement: "Admisión a CECyT 2 del IPN",
+            comment: "",
+        },
+        {
+            src: "Farid.png",
+            alt: "Farid",
+            name: "Farid",
             achievement: "Admisión a prepa 4 de la UNAM",
+            comment: "",
         },
         {
-            src: "resultado3.png",
-            alt: "Foto del alumno 3",
-            name: "Uziel",
+            src: "Angel.png",
+            alt: "Angel",
+            name: "Ángel",
             achievement: "Admisión a CCH Naucalpan de la UNAM",
+            comment: "",
         },
         {
-            src: "resultado13.png",
-            alt: "Foto del alumno 13",
-            name: "Aranza",
+            src: "Irvin.png",
+            alt: "Irvin",
+            name: "Irvin",
+            achievement: "Admisión a CECyT 2 del IPN",
+            comment: "",
+        },
+        {
+            src: "Jesus.png",
+            alt: "Jesus",
+            name: "Jesús",
+            achievement: "Admisión a CECyT 6 del IPN",
+            comment: "",
+        },
+        {
+            src: "Jimena.png",
+            alt: "Jimena",
+            name: "Jimena",
             achievement: "Admisión a CCH Naucalpan de la UNAM",
+            comment: "",
         },
         {
-            src: "resultado7.png",
-            alt: "Foto del alumno 7",
-            name: "Omar",
+            src: "Joshua.png",
+            alt: "Joshua",
+            name: "Joshua",
+            achievement: "Admisión a prepa 4 de la UNAM",
+            comment: "El curso de Tesla para entrar a la media superior a mi parecer fue excelente, los maestros son muy buenos y profesionales también te explican los temas que necesitas saber y que vendrán en el examen, en lo personal cuando a mí me explicaban un tema, lo entendia con mucha claridad y si no entendía me lo repetían hasta lo  entendiera, de verdad muy buen curso gracias a ellos logré sacar 103 aciertos en mi examen ecoems y quedarme en mi primera opción.",
+        },
+        {
+            src: "JuanAntonio.png",
+            alt: "Juan Antonio",
+            name: "Juan Antonio",
             achievement: "Admisión a CECYT 4 del IPN",
+            comment: "",
         },
         {
-            src: "resultado8.png",
-            alt: "Foto del alumno 8",
-            name: "Camila",
-            achievement: "Admisión a prepa 4  de la UNAM",
+            src: "JuanManuel.png",
+            alt: "Juan Manuel",
+            name: "Juan Manuel",
+            achievement: "Admisión a CCH Naucalpan de la UNAM",
+            comment: "",
         },
         {
-            src: "resultado11.png",
-            alt: "Foto del alumno 11",
-            name: "Israel",
-            achievement: "Admisión a prepa 4  de la UNAM",
+            src: "Lysandro.png",
+            alt: "Lysandro",
+            name: "Lysandro",
+            achievement: "Admisión a CCH Naucalpan de la UNAM",
+            comment: "",
         },
         {
-            src: "resultado4.png",
-            alt: "Foto del alumno 4",
-            name: "Francia",
-            achievement: "Admisión a CCH Naucalpan  de la UNAM",
+            src: "Mallory.png",
+            alt: "Mallory",
+            name: "Mallory",
+            achievement: "Admisión a prepa 4 de la UNAM",
+            comment: "",
         },
         {
-            src: "resultado5.png",
-            alt: "Foto del alumno 5",
-            name: "Alexander",
-            achievement: "Admisión a CECYT 4  del IPN",
+            src: "Viri.png",
+            alt: "Viri",
+            name: "Viri",
+            achievement: "Admisión a CECyT 4 del IPN",
+            comment: "",
         },
         {
-            src: "resultado10.png",
-            alt: "Foto del alumno 10",
-            name: "Dylan",
-            achievement: "Admisión a prepa 4  de la UNAM",
+            src: "Paola.png",
+            alt: "Paola",
+            name: "Paola",
+            achievement: "Admisión a prepa 4 de la UNAM",
+            comment: "",
         },
-
+        {
+            src: "Emiliano.png",
+            alt: "Emiliano",
+            name: "Emiliano",
+            achievement: "Admisión a CECYT 4 del IPN",
+            comment: "",
+        },
+        {
+            src: "Gabriel.png",
+            alt: "Gabriel",
+            name: "Gabriel",
+            achievement: "Admisión a CECYT 4 del IPN",
+            comment: "",
+        },
+        {
+            src: "Gustavo.png",
+            alt: "Gustavo",
+            name: "Gustavo",
+            achievement: "Admisión a CECYT 11 del IPN",
+            comment: "",
+        },
+        {
+            src: "Héctor.png",
+            alt: "Héctor",
+            name: "Héctor",
+            achievement: "Admisión CCH Naucalpan de la UNAM",
+            comment: "",
+        },
+        {
+            src: "Iker.png",
+            alt: "Iker",
+            name: "Iker",
+            achievement: "Admisión CCH Naucalpan de la UNAM",
+            comment: "",
+        },
+        {
+            src: "Santiago.png",
+            alt: "Santiago",
+            name: "Santiago",
+            achievement: "Admisión a prepa 4 de la UNAM",
+            comment: "",
+        },
     ];
 
     const nextSlide = () => {
@@ -100,46 +185,47 @@ export default function SuccessCasesCarousel() {
     return (
         <section className="py-16 bg-gray-50/0 text-center">
             <div className="container mx-auto bg-gray-100 px-4 lg:w-[80%]">
-                {/* Título de la sección */}
-                <h2 className="text-xl lg:text-4xl font-bold text-[#1d3660] lg:mb-8 pt-5">
+                <h2 className="text-xl lg:text-4xl font-bold text-[#1d3660] lg:mb-8 pt-3">
                     Conoce algunos de nuestros alumnos que han logrado su objetivo:
                 </h2>
 
-                {/* Contenedor principal del carrusel */}
-                <div className="relative h-80 md:h-[500px] overflow-hidden rounded-lg shadow-lg">
+                <div className="relative overflow-hidden rounded-lg shadow-lg">
                     {successStories.map((story, index) => (
                         <div
                             key={index}
                             className={`
-                absolute inset-0 
-                transition-transform duration-700 ease-in-out 
-                ${index === currentSlide ? "translate-x-0" :
-                                    index < currentSlide ? "-translate-x-full" : "translate-x-full"
+                                ${index === currentSlide ? "relative" : "absolute inset-0"}
+                                ${index === currentSlide ? "translate-x-0 opacity-100" :
+                                    index < currentSlide ? "-translate-x-full opacity-0" : "translate-x-full opacity-0"
                                 }
-              `}
+                                transition-all duration-700 ease-in-out
+                            `}
                         >
-                            <div className="flex items-center h-[70%] justify-center">
-                                <img src={story.src || "/placeholder.svg"} alt={story.alt} className="w-full h-[80%] md:h-full  lg:w-[70%]" />
-                            </div>
-                            <div className=" absolute inset-0 bg-gradient-to-t from-[#1d3660]/50 to-transparent flex items-end justify-start p-8 md:p-12">
-                                <div className=" text-center w-full text-black text-shadow-md text-shadow-slate-50">
-                                    {/* Nombre del alumno */}
-                                    <h3 className="text-3xl md:text-5xl font-bold mb-2">
+                            <div className="flex flex-col justify-start items-center">
+                                <div className="relative flex items-center justify-center p-4">
+                                    <img src={story.src || "/placeholder.svg"} alt={story.alt} className="w-full max-w-sm md:max-w-lg h-auto object-contain" />
+                                </div>
+
+                                <div className="relative p-4 pb-8 md:p-6 md:pb-10 text-center w-full  text-white md:text-black md:text-shadow-gray-50 md:text-shadow-sm bg-[#1d3660] bg-opacity-80 md:bg-transparent md:bg-gradient-to-t md:from-[#1d3660]/90 md:to-transparent">
+                                    <h3 className="text-3xl md:text-5xl font-bold mb-2 drop-shadow-md">
                                         {story.name}
                                     </h3>
-                                    {/* Logro del alumno */}
-                                    <p className="text-xl md:text-2xl font-medium">
+                                    <p className="text-lg md:text-2xl font-medium mb-2 drop-shadow-md">
                                         {story.achievement}
                                     </p>
+                                    {story.comment && (
+                                        <p className="text-sm md:text-lg font-normal md:font-bold italic drop-shadow-md">
+                                            "{story.comment}"
+                                        </p>
+                                    )}
                                 </div>
                             </div>
                         </div>
                     ))}
 
-                    {/* Controles de navegación (flechas) */}
                     <button
                         onClick={prevSlide}
-                        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 transition-all duration-300 z-10"
+                        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 transition-all duration-300 z-20"
                         aria-label="Diapositiva anterior"
                     >
                         <svg className="h-7 w-7 text-[#1d3660]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -148,7 +234,7 @@ export default function SuccessCasesCarousel() {
                     </button>
                     <button
                         onClick={nextSlide}
-                        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 transition-all duration-300 z-10"
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 transition-all duration-300 z-20"
                         aria-label="Diapositiva siguiente"
                     >
                         <svg className="h-7 w-7 text-[#1d3660]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -156,17 +242,15 @@ export default function SuccessCasesCarousel() {
                         </svg>
                     </button>
 
-                    {/* Indicadores de paginación (puntos) */}
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
                         {successStories.map((_, index) => (
                             <button
                                 key={index}
                                 onClick={() => setCurrentSlide(index)}
                                 className={`
-                  w-3 h-3 rounded-full transition-all duration-300 
-                  ${index === currentSlide ? "bg-[#1d3660] scale-125" : "bg-gray-400 hover:bg-gray-200"
-                                    }
-                `}
+                                    w-3 h-3 rounded-full transition-all duration-300 
+                                    ${index === currentSlide ? "bg-[#1d3660] scale-125" : "bg-gray-400 hover:bg-gray-200"}
+                                `}
                                 aria-label={`Ir a la diapositiva ${index + 1}`}
                             />
                         ))}
