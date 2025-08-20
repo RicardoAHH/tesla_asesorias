@@ -225,7 +225,7 @@ export default function SuccessCasesCarousel() {
 
                     <button
                         onClick={prevSlide}
-                        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 transition-all duration-300 z-20"
+                        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/60  hover:bg-white/30 rounded-full p-2 transition-all duration-300 z-20"
                         aria-label="Diapositiva anterior"
                     >
                         <svg className="h-7 w-7 text-[#1d3660]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -234,7 +234,7 @@ export default function SuccessCasesCarousel() {
                     </button>
                     <button
                         onClick={nextSlide}
-                        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 transition-all duration-300 z-20"
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/60 hover:bg-white/30 rounded-full p-2 transition-all duration-300 z-20"
                         aria-label="Diapositiva siguiente"
                     >
                         <svg className="h-7 w-7 text-[#1d3660]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
