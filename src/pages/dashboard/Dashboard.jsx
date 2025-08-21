@@ -1,73 +1,59 @@
-// src/pages/dashboard/DashboardLayout.jsx (o donde decidas ubicarlo)
+// src/pages/dashboard/DashboardLayout.jsx
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Outlet, useLocation, useParams } from 'react-router';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../utils/supabaseClient';
 
-// Importa tus componentes de vista específicos
-import ProfileView from '../../components/dashboard/ProfileView';
-// import GradesView from './GradesView';
-import CalendarView from '../../components/dashboard/CalendarView';
-import ScheduleView from '../../components/dashboard/ScheduleView';
-import RecordedClassesView from '../../components/dashboard/RecordedClassesView'; // Este será dinámico
-import ResourcesView from '../../components/dashboard/ResourcesView';// Este será dinámico
-import AnnouncementsView from '../../components/dashboard/AnnouncementsView';
+// Icono para el menú hamburguesa (puedes usar un SVG o una librería de iconos)
+const MenuIcon = () => (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+    </svg>
+);
 
 export default function DashboardLayout() {
     const { user, loading: authLoading } = useAuth();
     const navigate = useNavigate();
-    const location = useLocation(); // Para saber la ruta actual y resaltar el botón
+    const location = useLocation();
     const [userProfile, setUserProfile] = useState(null);
     const [profileLoading, setProfileLoading] = useState(true);
     const [error, setError] = useState('');
     const { groupName } = useParams();
 
+    // Estado para controlar la visibilidad del menú en móviles
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
     useEffect(() => {
-        console.log("DashboardLayout useEffect: authLoading", authLoading, "user", user);
-        // Redirige si el usuario no está autenticado después de que authLoading termina
         if (!authLoading && !user) {
             navigate('/login');
             return;
         }
 
-        // Carga el perfil del usuario una vez que sabemos que está autenticado
         const fetchUserProfile = async () => {
             if (user) {
                 setProfileLoading(true);
                 setError('');
-                console.log("DashboardLayout: Iniciando fetchUserProfile para user.id:", user.id);
                 try {
                     const { data, error } = await supabase
                         .from('users')
-                        .select('name, phone, school, group, lastname, grades_sheet_link') // Selecciona los campos que necesitas
+                        .select('name, phone, school, group, lastname, grades_sheet_link')
                         .eq('id', user.id)
                         .single();
 
-                    if (error) {
-                        console.error('Error fetching user profile from Supabase:', error.message);
-                        throw error;
-                    }
-
+                    if (error) throw error;
                     if (!data) {
-                        console.warn("DashboardLayout: No se encontraron datos de perfil para el usuario:", user.id);
                         setError('No se encontró información de perfil para tu cuenta.');
-                        setUserProfile(null); // Asegúrate de que userProfile sea null si no hay datos
-                        return; // Salir de la función si no hay datos
+                        setUserProfile(null);
+                        return;
                     }
-
-                    console.log("DashboardLayout: Perfil de usuario cargado:", data);
                     setUserProfile(data);
 
                 } catch (err) {
-                    console.error('DashboardLayout: Error al cargar el perfil:', err.message);
-                    console.error('Error fetching user profile:', err.message);
                     setError('No se pudo cargar tu perfil. Intenta de nuevo.');
                 } finally {
                     setProfileLoading(false);
-                    console.log("DashboardLayout: profileLoading fijado a false.");
                 }
-            } else {
-                console.log("DashboardLayout: user es null en fetchUserProfile, no se hace la llamada a Supabase.");
             }
         };
 
@@ -75,8 +61,6 @@ export default function DashboardLayout() {
             fetchUserProfile();
         }
     }, [user, authLoading, navigate, groupName]);
-
-    console.log("DashboardLayout Render: authLoading", authLoading, "profileLoading", profileLoading, "userProfile", userProfile);
 
     if (authLoading || profileLoading) {
         return <div className="min-h-screen flex items-center justify-center">Cargando dashboard...</div>;
@@ -90,18 +74,32 @@ export default function DashboardLayout() {
         return <div className="min-h-screen flex items-center justify-center">No se encontró información de perfil.</div>;
     }
 
-    // Determina el grupo del usuario para la navegación dinámica
-    const userGroup = userProfile.group; // Asumiendo que esta es la columna para el grupo
+    const userGroup = userProfile.group;
 
-    // Función para manejar la navegación entre secciones del dashboard
     const handleNavigation = (path) => {
-        navigate(`/dashboard/${userGroup.toLowerCase().replace(/\s/g, '')}/${path}`); // Ejemplo: /dashboard/grupoa/perfil
+        navigate(`/dashboard/${userGroup.toLowerCase().replace(/\s/g, '')}/${path}`);
+        // Cierra el menú al hacer clic en un enlace en móviles
+        if (window.innerWidth < 768) {
+            setIsMobileMenuOpen(false);
+        }
     };
 
     return (
-        <div className="pt-28 flex min-h-screen bg-gray-100">
+        <div className="pt-28 flex flex-col md:flex-row min-h-screen bg-gray-100 relative">
+            {/* Botón de Menú para Móviles */}
+            <div className="md:hidden p-4">
+                <button
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    className="p-2 text-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                >
+                    <MenuIcon />
+                </button>
+            </div>
+
             {/* Barra Lateral de Navegación */}
-            <aside className="w-64 bg-[#1d3660] text-white flex flex-col p-4">
+            <aside
+                className={`fixed inset-y-0 left-0 transform ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0 transition-transform duration-200 ease-in-out md:w-64 bg-[#1d3660] text-white flex flex-col p-4 z-50`}
+            >
                 <h1 className="text-2xl font-bold mb-8 text-center">Dashboard</h1>
                 <nav className="flex-grow">
                     <ul>
@@ -184,8 +182,7 @@ export default function DashboardLayout() {
                     </h2>
                 </header>
                 <div className="bg-white p-6 rounded-lg shadow-md min-h-[calc(100vh-180px)]">
-                    {/* Aquí se renderizará el componente de la ruta anidada */}
-                    <Outlet context={{ userProfile }} /> {/* Pasa el userProfile al Outlet */}
+                    <Outlet context={{ userProfile }} />
                 </div>
             </main>
         </div>
