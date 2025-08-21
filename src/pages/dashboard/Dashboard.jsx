@@ -1,11 +1,11 @@
 // src/pages/dashboard/DashboardLayout.jsx
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, Outlet, useLocation, useParams } from 'react-router';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../utils/supabaseClient';
 
-// Icono para el menú hamburguesa (puedes usar un SVG o una librería de iconos)
+// Icono para el menú hamburguesa
 const MenuIcon = () => (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
@@ -21,8 +21,8 @@ export default function DashboardLayout() {
     const [error, setError] = useState('');
     const { groupName } = useParams();
 
-    // Estado para controlar la visibilidad del menú en móviles
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const sidebarRef = useRef(null);
 
     useEffect(() => {
         if (!authLoading && !user) {
@@ -62,6 +62,20 @@ export default function DashboardLayout() {
         }
     }, [user, authLoading, navigate, groupName]);
 
+    // Lógica para cerrar el menú si se hace clic fuera de él
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+                setIsMobileMenuOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [sidebarRef]);
+
     if (authLoading || profileLoading) {
         return <div className="min-h-screen flex items-center justify-center">Cargando dashboard...</div>;
     }
@@ -78,7 +92,6 @@ export default function DashboardLayout() {
 
     const handleNavigation = (path) => {
         navigate(`/dashboard/${userGroup.toLowerCase().replace(/\s/g, '')}/${path}`);
-        // Cierra el menú al hacer clic en un enlace en móviles
         if (window.innerWidth < 768) {
             setIsMobileMenuOpen(false);
         }
@@ -86,18 +99,21 @@ export default function DashboardLayout() {
 
     return (
         <div className="pt-28 flex flex-col md:flex-row min-h-screen bg-gray-100 relative">
-            {/* Botón de Menú para Móviles */}
-            <div className="md:hidden p-4">
+            {/* Contenedor del Botón de Menú para Móviles con el texto */}
+            <div className="md:hidden p-4 flex items-center text-[#1d3660]">
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="p-2 text-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                    className="flex p-2 gap-3 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white mr-2"
                 >
                     <MenuIcon />
+                    <span className="text-lg font-semibold">Menú Alumnos</span>
                 </button>
+
             </div>
 
             {/* Barra Lateral de Navegación */}
             <aside
+                ref={sidebarRef} // Asignamos la referencia al elemento
                 className={`fixed inset-y-0 left-0 transform ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0 transition-transform duration-200 ease-in-out md:w-64 bg-[#1d3660] text-white flex flex-col p-4 z-50`}
             >
                 <h1 className="text-2xl font-bold mb-8 text-center">Dashboard</h1>
