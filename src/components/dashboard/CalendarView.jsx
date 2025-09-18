@@ -3,24 +3,33 @@ import React from 'react';
 import { useOutletContext } from 'react-router';
 
 // Importa todas tus imágenes
-import calendarGrupoA from '/Calendario1.jpg';
-import calendarGrupoB from '/Calendario1.jpg';
-import calendarGrupoC from '/Calendario1.jpg';
-import calendarGrupoD from '/Calendario1.jpg';
+import calendarGrupo1 from '/grupos1y3.jpg';
+import calendarGrupo2 from '/Calendario1.jpg';
+import calendarGrupo3 from '/grupos1y3.jpg';
+import calendarGrupo4 from '/Calendario1.jpg';
+import calendarGrupo5 from '/Calendario1.jpg';
 import calendarDefault from '/Calendario1.jpg';
 
 // Objeto que mapea nombres de grupo (en minúsculas) a sus rutas de imagen
 const calendarImages = {
-    'grupo a': calendarGrupoA,
-    'grupo b': calendarGrupoB,
-    'grupo c': calendarGrupoC,
-    'grupo d': calendarGrupoD,
+    'grupo 1': calendarGrupo1,
+    'grupo 2': calendarGrupo2,
+    'grupo 3': calendarGrupo3,
+    'grupo 4': calendarGrupo4,
+    'grupo 5': calendarGrupo5,
 };
 
 export default function CalendarView() {
     const { userProfile } = useOutletContext();
+    console.log('User Profile in CalendarView:', userProfile);
 
-    if (!userProfile || !userProfile.group) {
+    // Muestra un estado de carga mientras los datos se recuperan
+    if (!userProfile) {
+        return <div className="p-6 text-gray-500">Cargando calendario...</div>;
+    }
+
+    // Si userProfile existe pero no tiene el grupo, muestra un mensaje de error específico
+    if (!userProfile.group) {
         return (
             <div className="p-6 text-red-600">
                 No se pudo determinar el grupo para mostrar el calendario.

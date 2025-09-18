@@ -3,19 +3,21 @@ import { useOutletContext } from 'react-router'; // Asegúrate que sea 'react-ro
 
 // Importa tus imágenes de horario aquí
 // Asegúrate de que las rutas sean correctas y las imágenes existan
-import scheduleGrupoA from '/horario1.jpg'; // Ruta a tu imagen para Horario Grupo A
-import scheduleGrupoB from '/horario1.jpg'; // Ruta a tu imagen para Horario Grupo B
-import scheduleGrupoC from '/horario1.jpg'; // Ruta a tu imagen para Horario Grupo C
-import scheduleGrupoD from '/horario1.jpg'; // Ruta a tu imagen para Horario Grupo D
+import scheduleGrupo1 from '/horariogrupo1.jpg'; // Ruta a tu imagen para Horario Grupo 1
+import scheduleGrupo2 from '/horario1.jpg'; // Ruta a tu imagen para Horario Grupo 2
+import scheduleGrupo3 from '/horario1.jpg'; // Ruta a tu imagen para Horario Grupo 3
+import scheduleGrupo4 from '/horario1.jpg'; // Ruta a tu imagen para Horario Grupo 4
+import scheduleGrupo5 from '/horario1.jpg'; // Ruta a tu imagen para Horario Grupo 5
 // Opcional: una imagen por defecto si el grupo no tiene un horario específico
 import scheduleDefault from '/horarioVacio.jpg';
 
 // Objeto que mapea nombres de grupo (en minúsculas) a sus rutas de imagen de horario
 const scheduleImages = {
-    'grupo a': scheduleGrupoA,
-    'grupo b': scheduleGrupoB,
-    'grupo c': scheduleGrupoC,
-    'grupo d': scheduleGrupoD,
+    'grupo 1': scheduleGrupo1,
+    'grupo 2': scheduleGrupo2,
+    'grupo 3': scheduleGrupo3,
+    'grupo 4': scheduleGrupo4,
+    'grupo 5': scheduleGrupo5,
     // Puedes añadir más grupos aquí si los tienes
 };
 
@@ -43,7 +45,7 @@ export default function ScheduleView() {
                     <img
                         src={scheduleImageSrc}
                         alt={`Horario para ${userProfile.group}`}
-                        className="max-w-full h-auto rounded-lg shadow-md"
+                        className="max-w-full lg:w-250 h-auto rounded-lg shadow-md"
                     // Puedes añadir estilos para controlar el tamaño de la imagen si es necesario
                     // style={{ maxWidth: '800px', maxHeight: '600px' }}
                     />
