@@ -8,7 +8,6 @@ export default function RecordedClassesView() {
     const [recordedClasses, setRecordedClasses] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-
     useEffect(() => {
         const fetchRecordedClasses = async () => {
             if (!userProfile || !userProfile.group) {

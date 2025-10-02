@@ -21,7 +21,6 @@ const calendarImages = {
 
 export default function CalendarView() {
     const { userProfile } = useOutletContext();
-    console.log('User Profile in CalendarView:', userProfile);
 
     // Muestra un estado de carga mientras los datos se recuperan
     if (!userProfile) {

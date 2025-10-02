@@ -5,7 +5,6 @@ import { useOutletContext } from 'react-router';
 export default function ProfileView() {
     // Recibe el userProfile del Outlet del DashboardLayout
     const { userProfile } = useOutletContext();
-    console.log("ProfileView: userProfile recibido por Outlet:", userProfile);
     if (!userProfile) {
         console.log("ProfileView: userProfile es null/undefined, mostrando 'Cargando perfil...'");
         return <div>Cargando perfil...</div>; // O un mensaje de error si el perfil no se cargó
