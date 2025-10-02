@@ -194,7 +194,7 @@ export default function DashboardLayout() {
             <main className="flex-grow p-8">
                 <header className="mb-8">
                     <h2 className="text-3xl font-semibold text-[#1d3660]">
-                        Bienvenido, {userProfile.name}! ({userProfile.group})
+                        Bienvenid@, {userProfile.name}! ({userProfile.group})
                     </h2>
                 </header>
                 <div className="bg-white p-6 rounded-lg shadow-md min-h-[calc(100vh-180px)]">
