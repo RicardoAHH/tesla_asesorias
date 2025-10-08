@@ -4,7 +4,7 @@ import { useOutletContext } from 'react-router'; // Asegúrate que sea 'react-ro
 // Importa tus imágenes de horario aquí
 // Asegúrate de que las rutas sean correctas y las imágenes existan
 import scheduleGrupo1 from '/horariogrupo1.jpg'; // Ruta a tu imagen para Horario Grupo 1
-import scheduleGrupo2 from '/horario1.jpg'; // Ruta a tu imagen para Horario Grupo 2
+import scheduleGrupo2 from '/horariogrupo2.jpg'; // Ruta a tu imagen para Horario Grupo 2
 import scheduleGrupo3 from '/horario1.jpg'; // Ruta a tu imagen para Horario Grupo 3
 import scheduleGrupo4 from '/horario1.jpg'; // Ruta a tu imagen para Horario Grupo 4
 import scheduleGrupo5 from '/horario1.jpg'; // Ruta a tu imagen para Horario Grupo 5
