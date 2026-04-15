@@ -3,10 +3,10 @@ import React from 'react';
 import { useOutletContext } from 'react-router';
 
 // Importa todas tus imágenes
-import calendarGrupo1 from '/grupos1y3n.jpg';
-import calendarGrupo2 from '/grupos2y4n.jpg';
-import calendarGrupo3 from '/grupos1y3n.jpg';
-import calendarGrupo4 from '/grupos2y4n.jpg';
+import calendarGrupo1 from '/grupos1y3s.jpg';
+import calendarGrupo2 from '/grupos2y4s.jpg';
+import calendarGrupo3 from '/grupos1y3s.jpg';
+import calendarGrupo4 from '/grupos2y4s.jpg';
 import calendarGrupo5 from '/Calendario1.jpg';
 import calendarDefault from '/Calendario1.jpg';
 
